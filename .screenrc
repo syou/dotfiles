@@ -1,0 +1,38 @@
+
+escape ^z^z
+hardstatus alwayslastline "%w"
+
+vbell off
+
+startup_message off
+
+# コピーモードで Emacs のような移動を可能にする
+# (man にも載っている定番)
+markkeys h=^b:l=^f:$=^e
+
+#タブ風のキャプション表示
+#caption always "%{= wg} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wb}%y/%m/%d(%D) %{=b wm}%c"
+#hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+#hardstatus alwayslastline "%{= wk} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wb}%y/%m/%d %{=b wb}%c"
+hardstatus alwayslastline "[%02c] %w"
+#hardstatus ignore "%w | %h"
+# 現在位置から行末までコピーする
+# URL のコピペに使えます(C-a C-k)
+bind ^k  eval "copy" "stuff ' $ '"
+
+
+
+#C+Spaceでコピーモードに入った直後に最初のマークを付ける
+bind ' ' eval "copy" "stuff ' '"
+
+# クラスlauncherに属するキーバインドを設定
+bind -c launcher t screen top
+bind -c launcher w screen w3m -B
+bind -c launcher ^z command
+
+startup_message off
+
+#いやなBELL消し
+bind ^G
+bind g
+

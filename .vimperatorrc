@@ -1,0 +1,45 @@
+"2.1 (created: 2009/05/21 13:13:06)
+
+set guioptions=m
+set titlestring=Firefox
+" for search (no check big word & small word)
+set ignorecase
+" for not focus to textbox when page moved.
+set focuscontent
+
+" set keyboard
+imap <C-f> <Right>
+cmap <C-f> <Right>
+imap <C-n> <Down>
+cmap <C-n> <Down>
+cmap <C-p> <Up>
+
+"set f gui
+set hintstyle=z-index:5000; font-family:monospace; font-size:12pt; color:black; background-color:#CCF; border-color:ButtonShadow; border-width:1px; border-style:solid; padding:0px 1px 0px 1px; position:absolute;
+
+" ??
+" http://unsigned.g.hatena.ne.jp/Trapezoid/20080620/1213889094
+set wildoptions=auto
+set complete=sl
+
+" ']]', '[['で探す候補らしい。
+set nextpattern=^次(へ|の|ペ),^続き,\bnext\b,^>$,^(>>|&#187;)$,^(>|&#187;),(>|&#187;)$,\bmore\b
+set previouspattern=^前(へ|の|ペ),^戻る,\bprev|previous\b,^<$,^(<<|&#171;)$,^(<|&#171;),(<|&#171;)$
+
+
+set editor emacs
+
+" 補完を早くするらしい。
+set preload
+
+noremap j 5j
+noremap k 5k
+noremap J <C-d>
+noremap K <C-u>
+
+
+
+set runtimepath=/home/syou/.vimperator
+source! /home/syou/.vimperatorrc.local
+
+" vim: set ft=vimperator:
