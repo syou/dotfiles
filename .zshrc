@@ -1,10 +1,10 @@
 #PATH
 PATH=$PATH:/usr/local/ruby1.8/bin
 
-# ¥×¥í¥ó¥×¥È¤Î¥«¥é¡¼É½¼¨¤òÍ­¸ú
+# ãƒ—ãƒ­ãƒ³ãƒ—ãƒˆã®ã‚«ãƒ©ãƒ¼è¡¨ç¤ºã‚’æœ‰åŠ¹
 autoload colors; colors
 
-#screenÊä´°¡£
+#screenè£œå®Œã€‚
 if [ "$TERM" = "screen" ]; then
     chpwd () { echo -n "_`dirs`\\" }
     preexec() {
@@ -49,18 +49,18 @@ fi
 bindkey -e
 
 
-# sudo ¤ÇÊä´°¤òÍ­¸ú¤Ë¤¹¤ë
+# sudo ã§è£œå®Œã‚’æœ‰åŠ¹ã«ã™ã‚‹
  zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 # zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin
 #                             /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
 
 
-# Êä´°¤Î»ş¤ËÂçÊ¸»ú¾®Ê¸»ú¤ò¶èÊÌ¤·¤Ê¤¤
+# è£œå®Œã®æ™‚ã«å¤§æ–‡å­—å°æ–‡å­—ã‚’åŒºåˆ¥ã—ãªã„
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 
 
-#gemÊä´°´Ø¿ô(from kabus)
+#gemè£œå®Œé–¢æ•°(from kabus)
 alias gem-update-list="gem list -r 2> /dev/null | grep '^[a-zA-Z]' | awk '{print \$1}' > $HOME/.gemlist"
 _gem () {
     LIMIT=`date -d "1 week ago" +%s`
@@ -72,7 +72,7 @@ _gem () {
 compctl -k "(`gem help commands | grep '^    \w.*' | sed 's/^\s*//' | sed 's/\s\s*.*//'`)" -x 'c[-1,-t]' - 'C[-1,(install)]' -K _gem -- gem
 
 
-#ÍúÎò¸¡º÷µ¡Ç½¤Î¥·¥ç¡¼¥È¥«¥Ã¥ÈÀßÄê
+#å±¥æ­´æ¤œç´¢æ©Ÿèƒ½ã®ã‚·ãƒ§ãƒ¼ãƒˆã‚«ãƒƒãƒˆè¨­å®š
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
@@ -82,7 +82,7 @@ bindkey "\\ep" history-beginning-search-backward-end
 bindkey "\\en" history-beginning-search-forward-end
 
 
-# °ÜÆ°¤·¤¿¥Ç¥£¥ì¥¯¥È¥ê¤òµ­Ï¿
+# ç§»å‹•ã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨˜éŒ²
 setopt auto_pushd
 
 
@@ -105,10 +105,10 @@ setopt auto_pushd
 
 export LANG=ja_JP.UTF-8
 
-# ¥¨¥¹¥±¡¼¥×¥·¡¼¥±¥ó¥¹¤ò»È¤¦¡£
+# ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã‚’ä½¿ã†ã€‚
 setopt prompt_subst
 
-#emacs¤ò»È¤¦
+#emacsã‚’ä½¿ã†
 export EDITOR=emacs
 export SVN_EDITOR=emacs
 
@@ -123,7 +123,7 @@ esac
 
 
 
-# C s Ìµ¸ú
+# C s ç„¡åŠ¹
 stty stop undef
 
 PROMPTTTY=`tty | sed -e 's/^\/dev\///'`
@@ -156,7 +156,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000000
 SAVEHIST=10000000
 
-function history-all { history -E 1 } # Á´ÍúÎò¤Î°ìÍ÷¤ò½ĞÎÏ¤¹¤ë
+function history-all { history -E 1 } # å…¨å±¥æ­´ã®ä¸€è¦§ã‚’å‡ºåŠ›ã™ã‚‹
 
 
 #case ${UID} in
@@ -176,35 +176,35 @@ function history-all { history -E 1 } # Á´ÍúÎò¤Î°ìÍ÷¤ò½ĞÎÏ¤¹¤ë
 #    ;;
 #esac
 
-# ¥Ç¥Õ¥©¥ë¥È¤ÎÊä´°µ¡Ç½¤òÍ­¸ú
+# ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®è£œå®Œæ©Ÿèƒ½ã‚’æœ‰åŠ¹
 ## Completion configuration
 #
 # fpath=(~/.zsh/functions/Completion ${fpath})
 autoload -U compinit; compinit
 
-# Êä´°¸ôÊä¤òEmacs¤Î¥­¡¼¥Ğ¥¤¥ó¥É¤ÇÆ°¤­²ó¤ë
+# è£œå®Œä¾¯è£œã‚’Emacsã®ã‚­ãƒ¼ãƒã‚¤ãƒ³ãƒ‰ã§å‹•ãå›ã‚‹
 # zstyle ':completion:*:default' menu select=1
 
 # compacked complete list display
 #
 setopt list_packed
 
-# ¥Ç¥£¥ì¥¯¥È¥êÌ¾¤À¤±¤Ç°ÜÆ°¤Ç¤­¤ë¡£
+# ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªåã ã‘ã§ç§»å‹•ã§ãã‚‹ã€‚
 setopt auto_cd
 
-# rm * ¤ò¼Â¹Ô¤¹¤ëÁ°¤Ë³ÎÇ§¤µ¤ì¤ë¡£
+# rm * ã‚’å®Ÿè¡Œã™ã‚‹å‰ã«ç¢ºèªã•ã‚Œã‚‹ã€‚
 setopt rmstar_wait
 
-# ¥í¥°¥¤¥ó¤È¥í¥°¥¢¥¦¥È¤ò´Æ»ë¤¹¤ë¡£
+# ãƒ­ã‚°ã‚¤ãƒ³ã¨ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã‚’ç›£è¦–ã™ã‚‹ã€‚
 #watch=(all all)
-# Á´Éô´Æ»ë
+# å…¨éƒ¨ç›£è¦–
 watch="all"
-# 10Ê¬¤ª¤­(¥Ç¥Õ¥©¥ë¥È¤Ï1Ê¬¤ª¤­)
+# 10åˆ†ãŠã(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯1åˆ†ãŠã)
 #LOGCHECK="$[10 * 60]"
-# ¼è¤ê¤¢¤¨¤ºÉ½¼¨¤·¤Æ¤ß¤ë
+# å–ã‚Šã‚ãˆãšè¡¨ç¤ºã—ã¦ã¿ã‚‹
 log
 
-# ¥Õ¥¡¥¤¥ë¥ê¥¹¥ÈÊä´°¤Ç¤âls¤ÈÆ±ÍÍ¤Ë¿§¤ò¤Ä¤±¤ë
+# ãƒ•ã‚¡ã‚¤ãƒ«ãƒªã‚¹ãƒˆè£œå®Œã§ã‚‚lsã¨åŒæ§˜ã«è‰²ã‚’ã¤ã‘ã‚‹
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 
@@ -216,37 +216,37 @@ setopt noautoremoveslash
 #
 setopt nolistbeep
 
-# ¥Ğ¥Ã¥¯¥°¥é¥¦¥ó¥É¥¸¥ç¥Ö¤¬½ªÎ»¤·¤¿¤é¤¹¤°¤ËÃÎ¤é¤»¤ë¡£
+# ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã‚¸ãƒ§ãƒ–ãŒçµ‚äº†ã—ãŸã‚‰ã™ãã«çŸ¥ã‚‰ã›ã‚‹ã€‚
 setopt no_tify
 
-# ÍúÎò¥Õ¥¡¥¤¥ë¤Ë»ş¹ï¤òµ­Ï¿
+# å±¥æ­´ãƒ•ã‚¡ã‚¤ãƒ«ã«æ™‚åˆ»ã‚’è¨˜éŒ²
 setopt extended_history
 
-#history¥Õ¥¡¥¤¥ë¤Ë¾å½ñ¤­¤»¤º¤ËÄÉ²Ã
+#historyãƒ•ã‚¡ã‚¤ãƒ«ã«ä¸Šæ›¸ãã›ãšã«è¿½åŠ 
 setopt append_history
 
-# ÍúÎò¤ò¥¤¥ó¥¯¥ê¥á¥ó¥¿¥ë¤ËÄÉ²Ã
+# å±¥æ­´ã‚’ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ã‚¿ãƒ«ã«è¿½åŠ 
 setopt inc_append_history
 
-# ÍúÎò¤Î¶¦Í­
+# å±¥æ­´ã®å…±æœ‰
 setopt share_history
 
-# ¥Ò¥¹¥È¥ê¤ËÄÉ²Ã¤µ¤ì¤ë¥³¥Ş¥ó¥É¹Ô¤¬¸Å¤¤¤â¤Î¤ÈÆ±¤¸¤Ê¤é¸Å¤¤¤â¤Î¤òºï½ü
+# ãƒ’ã‚¹ãƒˆãƒªã«è¿½åŠ ã•ã‚Œã‚‹ã‚³ãƒãƒ³ãƒ‰è¡ŒãŒå¤ã„ã‚‚ã®ã¨åŒã˜ãªã‚‰å¤ã„ã‚‚ã®ã‚’å‰Šé™¤
 setopt hist_ignore_all_dups
 
-# Ä¾Á°¤ÈÆ±¤¸¥³¥Ş¥ó¥É¥é¥¤¥ó¤Ï¥Ò¥¹¥È¥ê¤ËÄÉ²Ã¤·¤Ê¤¤
+# ç›´å‰ã¨åŒã˜ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã¯ãƒ’ã‚¹ãƒˆãƒªã«è¿½åŠ ã—ãªã„
 setopt hist_ignore_dups
 
-# ¥¹¥Ú¡¼¥¹¤Ç»Ï¤Ş¤ë¥³¥Ş¥ó¥É¹Ô¤Ï¥Ò¥¹¥È¥ê¥ê¥¹¥È¤«¤éºï½ü
+# ã‚¹ãƒšãƒ¼ã‚¹ã§å§‹ã¾ã‚‹ã‚³ãƒãƒ³ãƒ‰è¡Œã¯ãƒ’ã‚¹ãƒˆãƒªãƒªã‚¹ãƒˆã‹ã‚‰å‰Šé™¤
 setopt hist_ignore_space
 
-# ¥Ò¥¹¥È¥ê¤ò¸Æ¤Ó½Ğ¤·¤Æ¤«¤é¼Â¹Ô¤¹¤ë´Ö¤Ë°ìÃ¶ÊÔ½¸²ÄÇ½
+# ãƒ’ã‚¹ãƒˆãƒªã‚’å‘¼ã³å‡ºã—ã¦ã‹ã‚‰å®Ÿè¡Œã™ã‚‹é–“ã«ä¸€æ—¦ç·¨é›†å¯èƒ½
 setopt hist_verify
 
-# core¤Î¥µ¥¤¥º
+# coreã®ã‚µã‚¤ã‚º
 limit coredumpsize 0
 
-# screen¤Ç¥Ğ¥Ã¥¯¥¹¥Ú¡¼¥¹¤¬¤­¤«¤Ê¤¯¤Ê¤ëÌäÂê¤òfix
+# screenã§ãƒãƒƒã‚¯ã‚¹ãƒšãƒ¼ã‚¹ãŒãã‹ãªããªã‚‹å•é¡Œã‚’fix
 #alias screen="TERM=screen screen"
 bindkey '^@' backward-delete-char
 
@@ -256,7 +256,7 @@ alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
 alias ll="ls -al"
-#¤È¡¼¤À¤¤¤ÈÆ±´ü¤¹¤ë¡£
+#ã¨ãƒ¼ã ã„ã¨åŒæœŸã™ã‚‹ã€‚
 alias ntpdate="ntpdate -u 130.69.251.23"
 alias twitter="~/ruby/twitter/tw.rb"
 
@@ -317,7 +317,7 @@ alias dpkg="env COLUMNS=130 \dpkg"
 
 alias mutt="env EDITOR=vim \mutt"
 
-#¤¦¤Ş¤¯¤¤¤«¤Ê¤¤¡£
+#ã†ã¾ãã„ã‹ãªã„ã€‚
 # alias sudo="env PATH=${PATH}:/sbin:/usr/sbin:/usr/local/sbin \sudo"
 
 #alias sodipodi="env GTK_IM_MODULE=im-ja \sodipodi"
@@ -360,12 +360,12 @@ kterm*|xterm*)
 esac
 
 
-# current directory¤¬ÊÑ¹¹¤µ¤ì¤¿»ş¤Ë¼Â¹Ô¤¹¤ë´Ø¿ô
+# current directoryãŒå¤‰æ›´ã•ã‚ŒãŸæ™‚ã«å®Ÿè¡Œã™ã‚‹é–¢æ•°
 function chpwd()
 {
-    # ¥Õ¥¡¥¤¥ë°ìÍ÷¤òÉ½¼¨
+    # ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§ã‚’è¡¨ç¤º
     ls;
-    # screen¥¿¥¤¥È¥ë¤ò¥«¥ì¥ó¥È¥Ç¥£¥ì¥¯¥È¥ê¤Ë
+    # screenã‚¿ã‚¤ãƒˆãƒ«ã‚’ã‚«ãƒ¬ãƒ³ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«
     [ "$TERM" = "screen" ] && \
 	echo -ne "\ek`pwd | sed -n 's/^.*\/\(.*\)$/\1\//p'`\e\\"
 }
