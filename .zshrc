@@ -1,5 +1,7 @@
 #PATH
-PATH=$PATH:/usr/local/ruby1.8/bin
+PATH=$PATH:/usr/share/eclipse/plugins/org.apache.ant_1.7.1.v20100518-1145/bin:/opt/ruby1.8/bin:/opt/android-sdk/platform-tools
+
+unset DBUS_SESSION_BUS_ADDRESS
 
 # プロンプトのカラー表示を有効
 autoload colors; colors
@@ -109,7 +111,7 @@ export LANG=ja_JP.UTF-8
 setopt prompt_subst
 
 #emacsを使う
-export EDITOR=emacs
+export EDITOR="emacs"
 export SVN_EDITOR=emacs
 
 
@@ -127,7 +129,7 @@ esac
 stty stop undef
 
 PROMPTTTY=`tty | sed -e 's/^\/dev\///'`
-PROMPT="[%B${cyan}%~${default}%b] <%B${PROMPTTTY}%b> %E
+PROMPT="[%b${cyan}%~${default}%b] <%B${PROMPTTTY}%b> %E
 %b%# "
 if [ `whoami` = root ]; then
         RPROMPT="${red}%B%n${default}%b@${logreen}%m${default}%b"
@@ -222,6 +224,9 @@ setopt no_tify
 # 履歴ファイルに時刻を記録
 setopt extended_history
 
+#glob search
+setopt extended_glob
+
 #historyファイルに上書きせずに追加
 setopt append_history
 
@@ -251,6 +256,11 @@ limit coredumpsize 0
 bindkey '^@' backward-delete-char
 
 ### set alias
+alias ssh='ssh -o ServerAliveInterval=60'
+alias ssh-noda="ssh nodat001.ed.noda.tus.ac.jp -l j7306169 -o ServerAliveInterval=60"
+alias ssh-watamin="ssh watamin.homeftp.net -l syou -p 24 -o ServerAliveInterval=60"
+alias ssh-watamin-local="ssh 192.167.0.9 -l syou -p 24 -o ServerAliveInterval=60"
+alias screen="LANG=C screen -U"
 alias rr="rm -rf"
 alias rm="rm -i"
 alias cp="cp -i"
